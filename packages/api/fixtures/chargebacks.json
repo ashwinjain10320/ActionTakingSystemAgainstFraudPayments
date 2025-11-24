@@ -1,0 +1,4 @@
+[
+  {"id": "cb_001", "customerId": "cust_002", "txnId": "txn_001", "reasonCode": "10.4", "amountCents": 499900, "status": "open", "filedAt": "2025-01-15T10:00:00Z"},
+  {"id": "cb_002", "customerId": "cust_004", "txnId": "txn_002", "reasonCode": "13.1", "amountCents": 299900, "status": "resolved", "filedAt": "2025-01-10T14:30:00Z"}
+]

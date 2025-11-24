@@ -1,0 +1,205 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Customers, Cards & Accounts
+model Customer {
+  id           String        @id @default(cuid())
+  name         String
+  emailMasked  String        @map("email_masked")
+  kycLevel     String        @map("kyc_level")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  
+  cards        Card[]
+  accounts     Account[]
+  transactions Transaction[]
+  alerts       Alert[]
+  cases        Case[]
+
+  @@map("customers")
+}
+
+model Card {
+  id         String        @id @default(cuid())
+  customerId String        @map("customer_id")
+  last4      String
+  network    String
+  status     String
+  createdAt  DateTime      @default(now()) @map("created_at")
+  
+  customer   Customer      @relation(fields: [customerId], references: [id])
+  transactions Transaction[]
+
+  @@index([customerId])
+  @@map("cards")
+}
+
+model Account {
+  id           String   @id @default(cuid())
+  customerId   String   @map("customer_id")
+  balanceCents Int      @map("balance_cents")
+  currency     String
+  
+  customer     Customer @relation(fields: [customerId], references: [id])
+
+  @@index([customerId])
+  @@map("accounts")
+}
+
+// Transactions
+model Transaction {
+  id         String   @id @default(cuid())
+  customerId String   @map("customer_id")
+  cardId     String   @map("card_id")
+  mcc        String
+  merchant   String
+  amountCents Int     @map("amount_cents")
+  currency   String
+  ts         DateTime @default(now())
+  deviceId   String?  @map("device_id")
+  country    String?
+  city       String?
+  
+  customer   Customer @relation(fields: [customerId], references: [id])
+  card       Card     @relation(fields: [cardId], references: [id])
+  alerts     Alert[]
+  cases      Case[]
+
+  @@unique([customerId, id])
+  @@index([customerId, ts(sort: Desc)])
+  @@index([merchant])
+  @@index([mcc])
+  @@index([customerId, merchant])
+  @@map("transactions")
+}
+
+// Alerts & Cases
+model Alert {
+  id            String        @id @default(cuid())
+  customerId    String        @map("customer_id")
+  suspectTxnId  String        @map("suspect_txn_id")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  risk          String
+  status        String
+  
+  customer      Customer      @relation(fields: [customerId], references: [id])
+  transaction   Transaction   @relation(fields: [suspectTxnId], references: [id])
+  triageRuns    TriageRun[]
+
+  @@index([customerId])
+  @@index([status])
+  @@map("alerts")
+}
+
+model Case {
+  id          String      @id @default(cuid())
+  customerId  String      @map("customer_id")
+  txnId       String?     @map("txn_id")
+  type        String
+  status      String
+  reasonCode  String      @map("reason_code")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  
+  customer    Customer    @relation(fields: [customerId], references: [id])
+  transaction Transaction? @relation(fields: [txnId], references: [id])
+  events      CaseEvent[]
+
+  @@index([customerId])
+  @@index([status])
+  @@map("cases")
+}
+
+model CaseEvent {
+  id          String   @id @default(cuid())
+  caseId      String   @map("case_id")
+  ts          DateTime @default(now())
+  actor       String
+  action      String
+  payloadJson Json     @map("payload_json")
+  
+  case        Case     @relation(fields: [caseId], references: [id])
+
+  @@index([caseId])
+  @@map("case_events")
+}
+
+// Triage Runs & Traces
+model TriageRun {
+  id            String        @id @default(cuid())
+  alertId       String        @map("alert_id")
+  startedAt     DateTime      @default(now()) @map("started_at")
+  endedAt       DateTime?     @map("ended_at")
+  risk          String?
+  reasons       Json?         @db.JsonB
+  fallbackUsed  Boolean       @default(false) @map("fallback_used")
+  latencyMs     Int?          @map("latency_ms")
+  
+  alert         Alert         @relation(fields: [alertId], references: [id])
+  traces        AgentTrace[]
+
+  @@index([alertId])
+  @@map("triage_runs")
+}
+
+model AgentTrace {
+  runId      String   @map("run_id")
+  seq        Int
+  step       String
+  ok         Boolean
+  durationMs Int      @map("duration_ms")
+  detailJson Json     @map("detail_json") @db.JsonB
+  
+  run        TriageRun @relation(fields: [runId], references: [id])
+
+  @@id([runId, seq])
+  @@map("agent_traces")
+}
+
+// KB & Policies
+model KbDoc {
+  id          String   @id @default(cuid())
+  title       String
+  anchor      String
+  contentText String   @map("content_text") @db.Text
+
+  @@index([title])
+  @@map("kb_docs")
+}
+
+model Policy {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  title       String
+  contentText String   @map("content_text") @db.Text
+
+  @@map("policies")
+}
+
+// Additional tables for fixtures
+model Device {
+  id        String   @id @default(cuid())
+  deviceId  String   @unique @map("device_id")
+  type      String
+  os        String
+  browser   String?
+
+  @@map("devices")
+}
+
+model Chargeback {
+  id            String   @id @default(cuid())
+  customerId    String   @map("customer_id")
+  txnId         String   @map("txn_id")
+  reasonCode    String   @map("reason_code")
+  amountCents   Int      @map("amount_cents")
+  status        String
+  filedAt       DateTime @default(now()) @map("filed_at")
+
+  @@index([customerId])
+  @@map("chargebacks")
+}

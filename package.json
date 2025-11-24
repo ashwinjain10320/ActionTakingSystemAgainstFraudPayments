@@ -1,0 +1,39 @@
+{
+  "name": "sentinel-support",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-Stack Fintech Case Resolution with Multi-Agent Automation",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm run install:api && npm run install:web",
+    "install:api": "cd packages/api && npm install",
+    "install:web": "cd packages/web && npm install",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:reset": "docker-compose down -v && docker-compose up -d",
+    "db:seed": "cd packages/api && npm run db:seed",
+    "dev:api": "cd packages/api && npm run dev",
+    "dev:web": "cd packages/web && npm run dev",
+    "build:api": "cd packages/api && npm run build",
+    "build:web": "cd packages/web && npm run build",
+    "eval": "cd packages/api && npm run eval",
+    "test": "npm run test:api && npm run test:web",
+    "test:api": "cd packages/api && npm test",
+    "test:web": "cd packages/web && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "async": "^3.2.6",
+    "esbuild": "^0.25.11"
+  }
+}

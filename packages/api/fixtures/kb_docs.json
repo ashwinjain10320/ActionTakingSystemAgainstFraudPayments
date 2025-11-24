@@ -1,0 +1,32 @@
+[
+  {
+    "id": "kb_001",
+    "title": "Fraud Detection Guidelines",
+    "anchor": "fraud-detection",
+    "contentText": "Fraud detection involves monitoring transaction patterns, velocity checks, device fingerprinting, and behavioral analysis. Key indicators include: sudden spike in transaction volume, transactions from new locations, unusual merchant categories, and device changes. All suspicious activities should be flagged for review."
+  },
+  {
+    "id": "kb_002",
+    "title": "Dispute Resolution Process",
+    "anchor": "disputes",
+    "contentText": "When handling customer disputes, verify the transaction details first. Common dispute reasons include: unrecognized charges (reason code 10.4), duplicate transactions (reason code 12.1), and service not received (reason code 13.1). Disputes must be filed within 120 days of the transaction date. Gather evidence including transaction logs, customer statements, and merchant responses."
+  },
+  {
+    "id": "kb_003",
+    "title": "Card Freeze Procedures",
+    "anchor": "card-freeze",
+    "contentText": "Cards can be frozen to prevent fraud. For customers with full KYC, immediate freeze is allowed. For basic KYC customers, OTP verification is required before freezing. Once frozen, the customer must be notified via SMS and email. Card can be unfrozen only after identity verification."
+  },
+  {
+    "id": "kb_004",
+    "title": "Chargeback Handling",
+    "anchor": "chargebacks",
+    "contentText": "Chargebacks are initiated when customers dispute transactions with their bank. The merchant has 7-10 days to respond with evidence. Common chargeback reasons: fraud, authorization issues, processing errors. Track chargeback ratios to identify problematic merchants."
+  },
+  {
+    "id": "kb_005",
+    "title": "Authorization vs Capture",
+    "anchor": "auth-capture",
+    "contentText": "Authorization (preauth) reserves funds but doesn't transfer them. Capture completes the transaction. Some merchants authorize first and capture later (hotels, gas stations). Customers may see duplicate charges temporarily - one pending authorization and one captured transaction. The authorization typically drops off in 3-5 business days."
+  }
+]

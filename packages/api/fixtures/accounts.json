@@ -1,0 +1,7 @@
+[
+  {"id": "acc_001", "customerId": "cust_001", "balanceCents": 15000000, "currency": "INR"},
+  {"id": "acc_002", "customerId": "cust_002", "balanceCents": 8500000, "currency": "INR"},
+  {"id": "acc_003", "customerId": "cust_003", "balanceCents": 12000000, "currency": "INR"},
+  {"id": "acc_004", "customerId": "cust_004", "balanceCents": 6500000, "currency": "INR"},
+  {"id": "acc_005", "customerId": "cust_005", "balanceCents": 20000000, "currency": "INR"}
+]

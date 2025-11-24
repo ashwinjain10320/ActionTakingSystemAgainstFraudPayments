@@ -1,0 +1,7 @@
+[
+  {"id": "card_001", "customerId": "cust_001", "last4": "4532", "network": "VISA", "status": "active", "createdAt": "2023-01-15T10:00:00Z"},
+  {"id": "card_002", "customerId": "cust_002", "last4": "8765", "network": "MASTERCARD", "status": "active", "createdAt": "2023-03-20T14:30:00Z"},
+  {"id": "card_003", "customerId": "cust_003", "last4": "2341", "network": "VISA", "status": "active", "createdAt": "2023-05-10T09:15:00Z"},
+  {"id": "card_004", "customerId": "cust_004", "last4": "9876", "network": "RUPAY", "status": "active", "createdAt": "2023-07-05T11:45:00Z"},
+  {"id": "card_005", "customerId": "cust_005", "last4": "1234", "network": "MASTERCARD", "status": "active", "createdAt": "2023-08-22T16:20:00Z"}
+]

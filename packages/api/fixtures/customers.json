@@ -1,0 +1,37 @@
+[
+  {
+    "id": "cust_001",
+    "name": "Rahul Sharma",
+    "emailMasked": "r***@gmail.com",
+    "kycLevel": "full",
+    "createdAt": "2023-01-15T10:00:00Z"
+  },
+  {
+    "id": "cust_002",
+    "name": "Priya Patel",
+    "emailMasked": "p***@yahoo.com",
+    "kycLevel": "basic",
+    "createdAt": "2023-03-20T14:30:00Z"
+  },
+  {
+    "id": "cust_003",
+    "name": "Amit Kumar",
+    "emailMasked": "a***@hotmail.com",
+    "kycLevel": "full",
+    "createdAt": "2023-05-10T09:15:00Z"
+  },
+  {
+    "id": "cust_004",
+    "name": "Sneha Reddy",
+    "emailMasked": "s***@gmail.com",
+    "kycLevel": "basic",
+    "createdAt": "2023-07-05T11:45:00Z"
+  },
+  {
+    "id": "cust_005",
+    "name": "Vikram Singh",
+    "emailMasked": "v***@outlook.com",
+    "kycLevel": "full",
+    "createdAt": "2023-08-22T16:20:00Z"
+  }
+]

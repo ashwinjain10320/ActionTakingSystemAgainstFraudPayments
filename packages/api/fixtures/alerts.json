@@ -1,0 +1,5 @@
+[
+  {"id": "alert_001", "customerId": "cust_002", "suspectTxnId": "txn_suspect_001", "createdAt": "2025-01-20T10:30:00Z", "risk": "high", "status": "open"},
+  {"id": "alert_002", "customerId": "cust_004", "suspectTxnId": "txn_suspect_002", "createdAt": "2025-01-21T14:15:00Z", "risk": "medium", "status": "open"},
+  {"id": "alert_003", "customerId": "cust_001", "suspectTxnId": "txn_suspect_003", "createdAt": "2025-01-22T09:45:00Z", "risk": "low", "status": "open"}
+]

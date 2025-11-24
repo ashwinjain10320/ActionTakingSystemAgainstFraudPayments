@@ -1,0 +1,20 @@
+[
+  {
+    "id": "pol_001",
+    "code": "freeze_card",
+    "title": "Card Freeze Policy",
+    "contentText": "Cards can be frozen to prevent unauthorized transactions. Full KYC customers: immediate freeze. Basic KYC customers: OTP verification required. Frozen cards cannot be used for any transactions until unfrozen through proper identity verification."
+  },
+  {
+    "id": "pol_002",
+    "code": "dispute_creation",
+    "title": "Dispute Creation Policy",
+    "contentText": "Disputes must be filed within 120 days of transaction date. Required information: transaction ID, reason code, supporting evidence. Agent role can create disputes up to ₹50,000. Lead role required for disputes above ₹50,000."
+  },
+  {
+    "id": "pol_003",
+    "code": "otp_verification",
+    "title": "OTP Verification Policy",
+    "contentText": "OTP verification is required for: basic KYC customers performing sensitive actions, transactions above ₹25,000, card freeze/unfreeze operations. OTP valid for 10 minutes. Maximum 3 attempts allowed."
+  }
+]

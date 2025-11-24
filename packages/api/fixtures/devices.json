@@ -1,0 +1,7 @@
+[
+  {"id": "dev_001", "deviceId": "device_android_001", "type": "mobile", "os": "Android 13", "browser": "Chrome Mobile"},
+  {"id": "dev_002", "deviceId": "device_ios_001", "type": "mobile", "os": "iOS 17", "browser": "Safari Mobile"},
+  {"id": "dev_003", "deviceId": "device_web_001", "type": "desktop", "os": "Windows 11", "browser": "Chrome"},
+  {"id": "dev_004", "deviceId": "device_web_002", "type": "desktop", "os": "macOS", "browser": "Safari"},
+  {"id": "dev_005", "deviceId": "device_android_002", "type": "mobile", "os": "Android 14", "browser": "Chrome Mobile"}
+]
